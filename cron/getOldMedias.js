@@ -5,6 +5,7 @@ var moment = require('moment');
 var mongo = require('mongodb').MongoClient
 
 var url = 'https://api.instagram.com/v1/tags/' + encodeURI('お雑煮') + '/media/recent';
+var total = 0;
 
 new cron('0,10,20,30,40,50 * * * * *', function() {
   request
@@ -36,7 +37,8 @@ new cron('0,10,20,30,40,50 * * * * *', function() {
         var col = db.collection('medias');
         col.insertMany(medias, function(err, res) {
           if (!err) {
-            console.log('[INFO] データベースに登録完了');
+            total += medias.length;
+            console.log('[INFO] データベースに登録完了 (' + total + '件)');
             db.close();
           };
         });
