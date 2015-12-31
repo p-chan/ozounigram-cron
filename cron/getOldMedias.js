@@ -22,7 +22,7 @@ new cron('0,10,20,30,40,50 * * * * *', function() {
           time: moment.unix(res.body.data[i].created_time).format('YYYY-MM-DD HH:mm:ss'),
           tags: res.body.data[i].tags,
           link: res.body.data[i].link,
-          image: res.body.data[i].images.standard_resolution.url,
+          image: res.body.data[i].images.low_resolution.url,
           text: res.body.data[i].caption.text,
           username: res.body.data[i].user.username,
           fullname: res.body.data[i].user.full_name,
