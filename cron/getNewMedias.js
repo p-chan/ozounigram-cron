@@ -6,7 +6,7 @@ var mongo = require('mongodb').MongoClient
 
 var url = 'https://api.instagram.com/v1/tags/' + encodeURI('お雑煮') + '/media/recent';
 
-new cron('0,30 * * * * *', function() {
+new cron('0,15,30,45 * * * * *', function() {
   request
     .get(url)
     .query({
